@@ -51,7 +51,9 @@ const Post = () => {
   };
 
   return loading ? (
-    <div>Loading ...</div>
+    <div className="w-full flex justify-center items-center text-2xl font-semibold">
+      Loading ...
+    </div>
   ) : error ? (
     <div>{error}</div>
   ) : (

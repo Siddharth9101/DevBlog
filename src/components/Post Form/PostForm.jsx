@@ -1,5 +1,5 @@
-import { useCallback, useEffect } from "react";
-import { useForm } from "react-hook-form";
+import { useCallback, useEffect, useState } from "react";
+import { set, useForm } from "react-hook-form";
 import { Button, Input, Select, RTE } from "../index";
 import appwriteService from "../../appwrite/database";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 const PostForm = ({ post }) => {
   const navigate = useNavigate();
   const userData = useSelector((state) => state.auth.userData);
+  const [error, setError] = useState("");
   const { register, handleSubmit, watch, control, setValue, getValues } =
     useForm({
       defaultValues: {
@@ -20,36 +21,46 @@ const PostForm = ({ post }) => {
 
   const submit = async (data) => {
     if (post) {
-      const file = data?.image?.[0]
-        ? await appwriteService.uploadFile(data.image[0])
-        : null;
-      if (file) {
-        await appwriteService.deleteFile(post.featuredImage);
+      try {
+        setError("");
+        const file = data?.image?.[0]
+          ? await appwriteService.uploadFile(data.image[0])
+          : null;
+        if (file) {
+          await appwriteService.deleteFile(post.featuredImage);
 
-        const dbPost = await appwriteService.updatePost(post.$id, {
-          ...data,
-          featuredImage: file ? file.$id : "",
-        });
+          const dbPost = await appwriteService.updatePost(post.$id, {
+            ...data,
+            featuredImage: file ? file.$id : "",
+          });
 
-        if (dbPost) {
-          navigate(`/post/${dbPost.$id}`);
+          if (dbPost) {
+            navigate(`/post/${dbPost.$id}`);
+          }
         }
+      } catch (error) {
+        setError(error.message);
       }
     } else {
-      const file = data?.image?.[0]
-        ? await appwriteService.uploadFile(data.image[0])
-        : null;
+      try {
+        setError("");
+        const file = data?.image?.[0]
+          ? await appwriteService.uploadFile(data.image[0])
+          : null;
 
-      if (file) {
-        const dbPost = await appwriteService.createPost({
-          ...data,
-          featuredImage: file ? file.$id : "",
-          userId: userData.$id,
-        });
+        if (file) {
+          const dbPost = await appwriteService.createPost({
+            ...data,
+            featuredImage: file ? file.$id : "",
+            userId: userData.$id,
+          });
 
-        if (dbPost) {
-          navigate(`/post/${dbPost.$id}`);
+          if (dbPost) {
+            navigate(`/post/${dbPost.$id}`);
+          }
         }
+      } catch (error) {
+        setError(error.message);
       }
     }
   };
@@ -80,6 +91,7 @@ const PostForm = ({ post }) => {
 
   return (
     <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
+      {error && <div className="text-red-500">{error}</div>}
       <div className="w-2/3 px-2">
         {/* Title */}
         <Input

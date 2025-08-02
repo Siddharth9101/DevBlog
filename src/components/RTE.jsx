@@ -13,7 +13,7 @@ const RTE = ({ name, control, label, defaultValue = "" }) => {
         render={({ field: { onChange } }) => (
           <Editor
             apiKey={config.tinymceApiKey}
-            intialValue={defaultValue}
+            initialValue={defaultValue}
             init={{
               intialValue: defaultValue,
               height: 300,

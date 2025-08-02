@@ -16,7 +16,13 @@ const Protected = ({ children, authentication = true }) => {
     }
     setLoader(false);
   }, [authStatus, navigate, authentication]);
-  return loader ? <h1>Loading...</h1> : <>{children}</>;
+  return loader ? (
+    <div className="w-full h-screen flex justify-center items-center">
+      <h1 className="text=2xl font-semibold">Loading...</h1>
+    </div>
+  ) : (
+    <>{children}</>
+  );
 };
 
 export default Protected;

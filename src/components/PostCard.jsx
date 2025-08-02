@@ -12,7 +12,7 @@ const PostCard = ({ post }) => {
             alt={title}
             className="rounded-xl "
           />
-          <h2 className="text-xl font-bold">{title}</h2>
+          <h2 className="text-xl font-bold ">{title}</h2>
         </div>
       </div>
     </Link>
