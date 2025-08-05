@@ -31,10 +31,10 @@ const AllPosts = () => {
   ) : (
     <div className="w-full py-8">
       <Container>
-        <div className="flex flex-wrap">
+        <div className="grid grid-cols-1 md:grid-cols-3">
           {posts.length > 0 ? (
             posts?.map((post) => (
-              <div key={post.$id} className="p-2 w-1/4">
+              <div key={post.$id} className="p-2">
                 <PostCard post={post} />
               </div>
             ))
