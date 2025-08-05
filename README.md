@@ -101,8 +101,17 @@ cp .env.sample .env
 npm run dev
 ```
 
-[🔗 Live demo](https://devblog-if7i.onrender.com/)
+🔗 [Live demo](https://devblog-if7i.onrender.com/)
 
 ## 📄 License
 
 This project is open-source and available under the MIT License.
+
+---
+
+## 🙏 Acknowledgements
+
+This project was built with guidance and inspiration from the  
+📺 [Chai aur react | with projects](https://www.youtube.com/playlist?list=PLu71SKxNbfoDqgPchmvIsL4hTnJIrtige)
+
+Special thanks to **Hitesh Choudhary** for creating such beginner-friendly, production ready and in-depth course.
