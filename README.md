@@ -25,6 +25,34 @@ DevBlog is a fullstack blog web application built using **React** for the fronte
 
 ---
 
+```
+devblog/
+├── public/               # static assets
+├── src/                  # source code
+│   ├── appwrite/         # Appwrite service (Auth, DB, Storage)
+│   ├── components/       # Reusable UI components
+│   ├── config/           # Configuration files (Appwrite config)
+│   ├── pages/            # Page-level components/routes
+│   ├── store/            # Redux store setup and slices
+│   ├── App.jsx           # Root app component
+│   ├── index.css         # Global styles (Tailwind included)
+│   └── main.jsx          # Entry point (ReactDOM rendering)
+├── .env                  # Environment variables
+├── .env.sample           # Sample env file
+├── .gitignore            # Git ignore rules
+├── eslint.config.js      # ESLint configuration
+├── index.html            # HTML template
+├── package.json          # Project metadata and dependencies
+├── package-lock.json     # Lockfile for reproducible installs
+├── postcss.config.js     # PostCSS
+├── tailwind.config.js    # Tailwind CSS configuration
+├── vite.config.js        # Vite bundler configuration
+└── README.md             # Project README
+
+```
+
+---
+
 ## 📸 Screenshots
 
 <img width="1351" height="607" alt="Image" src="https://github.com/user-attachments/assets/9860032a-a1f8-4526-bb61-9decdb33c9b0" />
@@ -72,6 +100,8 @@ cp .env.sample .env
 ```bash
 npm run dev
 ```
+
+[🔗 Live demo](https://devblog-if7i.onrender.com/)
 
 ## 📄 License
 
