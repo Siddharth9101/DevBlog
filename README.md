@@ -25,6 +25,8 @@ DevBlog is a fullstack blog web application built using **React** for the fronte
 
 ---
 
+## 📁 Project Structure
+
 ```
 devblog/
 ├── public/               # static assets
